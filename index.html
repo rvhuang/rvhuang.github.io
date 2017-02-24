@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +9,15 @@
     <title>Welcome - Robert V. Huang's Home Page</title>
     <!-- Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <style> 
+
+        #section_about, #section_career, #section_side_project, #section_personal, #section_contact {
+            padding-top: 50px; 
+        } 
+
+    </style>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -30,30 +38,32 @@
                     <li><a href="#section_contact">Contact</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
+            <!-- /.navbar-collapse  -->
         </div>
         <!-- /.container -->
     </nav><br />
-    <div class="container-fluid">
+    <div id="section_home" class="container-fluid">
+        <p>&nbsp;</p>
         <div class="page-header">
-            <h1>Welcome</h1>
-            <br />
-            <em>The Home Page of Robert Vandenberg Huang</em>
+            <h1>Welcome</h1> 
         </div>
-        <h2 id="section_about">About</h2>
+        <p><em>The Home Page of Robert Vandenberg Huang</em></p>   
+    </div>
+    <div id="section_about" class="container-fluid">
+        <h2>About</h2>
         <hr />
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-6">
                 <p>Born Bebruary 13, 1985, a boy from Taipei City, Taiwan. Have been working on software development since graduating from junior high school. Love sharing knowledge with people, learning new things and having interaction with developer community.</p>
                 <p>I enjoy writing down my understandings as I have completed a few articles on CodeProject discussing about <a href="https://www.codeproject.com/Articles/813480/HTTP-Partial-Content-In-Node-js" target="_blank">Node.js</a> and <a href="https://www.codeproject.com/Articles/820146/HTTP-Partial-Content-In-ASP-NET-Web-API-Video" target="_blank">ASP.NET Web API</a>. I also have various experimental repositories at <a href="https://github.com/rvhuang/" target="_blank">GitHub</a> to verify my ideas.</p>
                 <p>&nbsp;</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">Technical Experiences</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <ul class="list-unstyled">
                     <li>Web API Development with ASP.NET Web API, WCF RESTful Service and Node.js</li>
                     <li>Web API Client Library Development with .NET Framework and .NET Core on NuGet</li>
@@ -64,10 +74,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">Fields</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <ul class="list-unstyled">
                     <li>Customer Relationship Management</li>
                     <li>Event Messaging System</li>
@@ -77,10 +87,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead"><ins title="Not really good at though.">Interests</ins></p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <ul class="list-unstyled">
                     <li>Developer Experience</li>
                     <li>Game AI</li>
@@ -88,13 +98,15 @@
                 </ul>
             </div>
         </div>
-        <h2 id="section_career">Career</h2>
+    </div>
+    <div id="section_career" class="container-fluid">
+        <h2>Career</h2>
         <hr />
         <div class="row">
-            <div class="col-lg-2">
-                <p class="lead">At Xuenn Pte Ltd</p>
+            <div class="col-md-1">
+                <p class="lead">At Xuenn</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <ul class="list-unstyled">
                     <li>The design and implementation of Salesforce and 188BET back office system integration.</li>
                     <li>The design and implementation of 188BET customer messaging system.</li>
@@ -104,10 +116,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">At <abbr title="International Integrated Systems, Inc">IISI</abbr></p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <ul class="list-unstyled">
                     <li>The design and implementation of event messaging system for enterprise IP surveillance solution.</li>
                     <li>The design and implementation of event messaging WCF client library.</li>
@@ -118,16 +130,16 @@
         <h2 id="section_side_project">Projects</h2>
         <hr />
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-6">
                 <p>I have been working on a few experiments that are not so relevant to my career. I enjoy studying these topics and sharing my thoughts with people.</p>
                 <p>&nbsp;</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">Game AI</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <p><a href="https://rvhuang.github.io/heuristic-suite" target="_blank">Heuristic Suite</a> - a generic implementation of A* algorithm on .Net Core that can be applied to any kind of puzzle, as long as the puzzle can be resolved with the algorithm.</p>
                 <p>
                     <img src="http://www.8puzzle.com/images/8_puzzle_start_state_a.png" class="img-thumbnail" />
@@ -137,56 +149,61 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">Threading</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <p><a href="https://rvhuang.github.io/Scheduler/" target="_blank">Scheduler</a> - a thread-safe asynchronous producer-consumer model.</p>
                 <p><img class="img-responsive img-thumbnail" src="https://raw.githubusercontent.com/rvhuang/Scheduler/master/doc/images/scheduler-overview.png" alt="Scheduler" /></p>
                 <p>&nbsp;</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-1">
                 <p class="lead">String Searching</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <p><a href="https://rvhuang.github.io/kmp-algorithm/" target="_blank">KMP Algorithm .NET</a> - a implementation of Knuth–Morris–Pratt algorithm optimized for .Net platform that can be applied to all generic collections, as long as the element is euqatable.</p>
                 <p>&nbsp;</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
-                <p class="lead">Miscellaneous</p>
+            <div class="col-md-1">
+                <p class="lead">Misc</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-5">
                 <p><a href="https://github.com/rvhuang/snowflake-lite" target="_blank">Snowflake Lite</a> - a lightweight implementation of Twitter's Snowflake algorithm on .Net platform.</p>
                 <p>&nbsp;</p>
             </div>
         </div>
-        <h2 id="section_personal">Personal</h2>
+    </div>
+    <div id="section_personal" class="container-fluid">
+        <h2>Personal</h2>
         <hr />
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-6">
                 <p>I started learning and playing drums since 11. I also have certain skills of playing multiple Afro-Cuban percussions which are self-taught. Jazz music and video game music from Mario and Pokemon series are my favorite. One of my life goals is to play drums/percussion and make a <strong><a href="https://youtu.be/FBWLqDQyQwA" target="_blank">video</a></strong> in every workplace that I have stayed.</p>
                 <p>&nbsp;</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-6">
                 <blockquote class="instagram-media" data-instgrm-version="7" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style="background:#F8F8F8; line-height:0; margin-top:40px; padding:28.194444444444443% 0; text-align:center; width:100%;"> <div style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BQYCf3zlGlj/" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Robert Vandenberg Huang (@reasserthuang)</a> on <time style="font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-02-11T15:02:09+00:00">Feb 11, 2017 at 7:02am PST</time></p></div></blockquote>
                 <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
             </div>
         </div>
-        <h2 id="section_contact">Contact</h2>
+    </div>
+    <div id="section_contact" class="container-fluid">
+        <h2>Contact</h2>
+        <hr />
         <div class="row">
-            <div class="col-lg-8">
-                <a class="btn" href="mailto:rvh.omni@gmail.com" target="_blank" title="Email"><svg height="32" class="octicon octicon-mail" viewBox="0 0 14 16" version="1.1" width="28" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"></path></svg></a>
-                <a class="btn" href="https://github.com/rvhuang" target="_blank" title="GitHub"><svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
-                <a class="btn" href="https://gist.github.com/rvhuang" target="_blank" title="Gist"><svg height="32" class="octicon octicon-gist" viewBox="0 0 12 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg></a>
-                <a class="btn" href="http://www.codeproject.com/members/rvhuang" target="_blank" title="CodeProject">
-                    <img src="data:image/png;base64,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" />
-                </a>
+            <div class="col-md-6">
+                <p>
+                    <a class="btn" href="mailto:rvh.omni@gmail.com" target="_blank" title="Email"><svg height="32" class="octicon octicon-mail" viewBox="0 0 14 16" version="1.1" width="28" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"></path></svg></a>
+                    <a class="btn" href="https://github.com/rvhuang" target="_blank" title="GitHub"><svg height="32" class="octicon octicon-logo-github" viewBox="0 0 45 16" version="1.1" width="90" aria-hidden="true"><path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 0 0-.146-.18zm23.696-2.2c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61H33.84c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path></svg></a>
+                    <a class="btn" href="https://gist.github.com/rvhuang" target="_blank" title="Gist"><svg height="32" class="octicon octicon-logo-gist" viewBox="0 0 25 16" version="1.1" width="50" aria-hidden="true"><path fill-rule="evenodd" d="M4.7 8.73h2.45v4.02c-.55.27-1.64.34-2.53.34-2.56 0-3.47-2.2-3.47-5.05 0-2.85.91-5.06 3.48-5.06 1.28 0 2.06.23 3.28.73V2.66C7.27 2.33 6.25 2 4.63 2 1.13 2 0 4.69 0 8.03c0 3.34 1.11 6.03 4.63 6.03 1.64 0 2.81-.27 3.59-.64V7.73H4.7v1zm6.39 3.72V6.06h-1.05v6.28c0 1.25.58 1.72 1.72 1.72v-.89c-.48 0-.67-.16-.67-.7v-.02zm.25-8.72c0-.44-.33-.78-.78-.78s-.77.34-.77.78.33.78.77.78.78-.34.78-.78zm4.34 5.69c-1.5-.13-1.78-.48-1.78-1.17 0-.77.33-1.34 1.88-1.34 1.05 0 1.66.16 2.27.36v-.94c-.69-.3-1.52-.39-2.25-.39-2.2 0-2.92 1.2-2.92 2.31 0 1.08.47 1.88 2.73 2.08 1.55.13 1.77.63 1.77 1.34 0 .73-.44 1.42-2.06 1.42-1.11 0-1.86-.19-2.33-.36v.94c.5.2 1.58.39 2.33.39 2.38 0 3.14-1.2 3.14-2.41 0-1.28-.53-2.03-2.75-2.23h-.03zm8.58-2.47v-.86h-2.42v-2.5l-1.08.31v2.11l-1.56.44v.48h1.56v5c0 1.53 1.19 2.13 2.5 2.13.19 0 .52-.02.69-.05v-.89c-.19.03-.41.03-.61.03-.97 0-1.5-.39-1.5-1.34V6.94h2.42v.02-.01z"></path></svg></a>
+                </p>
+                <p><iframe src="https://www.codeproject.com/members/flair/4973163" height="200" width="250" scrolling="no" frameborder="0"></iframe></p>
             </div>
         </div>
     </div>
@@ -205,13 +222,13 @@
         });
     </script>
     <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-92592725-1', 'auto');
-  ga('send', 'pageview');
+         ga('create', 'UA-92592725-1', 'auto');
+         ga('send', 'pageview');
     </script>
 </body>
 </html>
