@@ -111,10 +111,10 @@
                         var tr = $('<tr></tr>'); 
                         $.each(coins, function (j, value) {
                             if (value) {
-                                tr.add("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
+                                tr = tr.add("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
                             }
                             else {
-                                tr.add("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
+                                tr = tr.add("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
                             }
                         });
                         $('#init').after(tr);
