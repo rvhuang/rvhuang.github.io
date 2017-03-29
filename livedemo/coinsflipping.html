@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Coins Flipping Live Demo - Robert V. Huang's Home Page</title>
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        img.coins {
+            display: inline-block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        img.coins-editable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page_cover"> 
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>Coins Flipping Live Demo</h1>
+                <p>
+                    This example demonstrates how the game AI solves the coins flipping puzzle.The puzzle is inspired by <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
+                    Game AI is run on <a href="https://azure.microsoft.com">Azure Functions</a>.<br /><br /> 
+                    <b>Puzzle Rule</b><br />
+                    Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.<br /><br />
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 table-responsive">     
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <td colspan="9"><b>Click Coins to Edit Initial State</b></td>
+                            <td><button class="btn pull-right" title="Run" id="run"><span class="glyphicon glyphicon-play"></span></button></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="init">
+                            <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div> 
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <hr />
+            <span class="text-muted">© <a href="/">Robert Vandenberg Huang</a></span> 
+            <div class="row">&nbsp;</div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>  
+        $("#page_cover").css("min-height", $(window).height());
+        $(".coins-editable").click(function () {
+            switch ($(this).attr("src")) {
+                case "head.jpg":
+                    $(this).attr("src", "tail.jpg");
+                    $(this).attr("title", "Tail");
+                    break;
+                case "tail.jpg":
+                    $(this).attr("src", "head.jpg");
+                    $(this).attr("title", "Head");
+                    break;
+            }
+        });
+        $("#run").click(function () {
+            var data = { Coins: [] };
+
+            $(".coins-editable").each(function () {
+                switch ($(this).attr("src")) {
+                    case "head.jpg":
+                        data.Coins.push(true);
+                    case "tail.jpg":
+                        data.Coins.push(false);
+                        break;
+                }
+            }); 
+            $.ajax({
+                method: "POST",
+                url: "https://heuristic-suite.azurewebsites.net/coinsflipping",
+                data: data,
+                dataType: "json",
+                headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg" },
+                success: function (result, textStatus, jqXHR) {
+                    $('#init').nextAll().remove();
+                    $.each(result, function (i, coins) {
+                        var tr = $('<tr></tr>');
+
+                        $.each(coins, function (j, value) {
+                            if (value) {
+                                tr.add("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
+                            }
+                            else {
+                                tr.add("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
+                            }
+                        });
+                        $('#init').after(tr);
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // TODO
+                }
+            });
+        });
+    </script>
+    <script>
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+         ga('create', 'UA-92592725-1', 'auto');
+         ga('send', 'pageview');
+    </script>
+</body>
+</html>
