@@ -92,6 +92,7 @@
                 switch ($(this).attr("src")) {
                     case "head.jpg":
                         data.Coins.push(true);
+                        break;
                     case "tail.jpg":
                         data.Coins.push(false);
                         break;
@@ -99,7 +100,7 @@
             }); 
             $.ajax({
                 method: "POST",
-                url: "https://heuristic-suite.azurewebsites.net/coinsflipping",
+                url: "https://heuristic-suite.azurewebsites.net/api/coinsflipping",
                 data: JSON.stringify(data),
                 dataType: "json",
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
