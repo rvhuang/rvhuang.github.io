@@ -100,7 +100,7 @@
             $.ajax({
                 method: "POST",
                 url: "https://heuristic-suite.azurewebsites.net/coinsflipping",
-                data: data,
+                data: JSON.stringify(data),
                 dataType: "json",
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg" },
                 success: function (result, textStatus, jqXHR) {
