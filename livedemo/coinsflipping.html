@@ -113,8 +113,9 @@
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
                 success: function (result, textStatus, jqXHR) {
                     $('#solution').empty();
-
-                    $.each(result, function (i, coins) {
+                     
+                    result.shift(); // remove initial state from solution.
+                    $.each(result, function (i, coins) { 
                         var tr = $('<tr></tr>'); 
                         $.each(coins, function (j, value) {
                             if (value) {
@@ -126,6 +127,11 @@
                         });
                         $('#solution').append(tr);
                     });
+                    if (result.length == 0) {
+                        var tr = $('<tr></tr>');
+                        tr.append("<td>No solution is found.</td>");
+                        $('#solution').append(tr);
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     // TODO
