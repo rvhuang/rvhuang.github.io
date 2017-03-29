@@ -73,7 +73,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>  
         $("#page_cover").css("min-height", $(window).height());
-        $(".coins-editable").click(function () {
+        $("img.coins-editable").click(function () {
             switch ($(this).attr("src")) {
                 case "head.jpg":
                     $(this).attr("src", "tail.jpg");
@@ -88,7 +88,7 @@
         $("#run").click(function () {
             var data = { Coins: [] };
 
-            $(".coins-editable").each(function () {
+            $("img.coins-editable").each(function () {
                 switch ($(this).attr("src")) {
                     case "head.jpg":
                         data.Coins.push(true);
@@ -102,7 +102,7 @@
                 url: "https://heuristic-suite.azurewebsites.net/coinsflipping",
                 data: JSON.stringify(data),
                 dataType: "json",
-                headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg" },
+                headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
                 success: function (result, textStatus, jqXHR) {
                     $('#init').nextAll().remove();
                     $.each(result, function (i, coins) {
