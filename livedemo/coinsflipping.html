@@ -28,15 +28,17 @@
             <div class="col-lg-8">
                 <h1>Coins Flipping Live Demo</h1>
                 <p>
-                    This example demonstrates how the game AI solves the coins flipping puzzle.The puzzle is inspired by <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
-                    Game AI is run on <a href="https://azure.microsoft.com">Azure Functions</a>.<br /><br /> 
+                    This example demonstrates how the game AI solves the coins flipping puzzle.
+                    The puzzle is inspired by <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
+                    Game AI is run on <a href="https://azure.microsoft.com" target="_blank">Azure Functions</a>.
+                    Source code of console implementation can be seen on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.<br /><br /> 
                     <b>Puzzle Rule</b><br />
                     Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.<br /><br />
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 table-responsive">     
+            <div class="col-lg-12 table-responsive">
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -45,20 +47,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="init">
+                        <tr>
                             <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
-                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td>
                             <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
-                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td>
                             <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
-                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td>
                             <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
-                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td>
                             <td><img src="head.jpg" class="coins coins-editable" title="Head" /></td>
-                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td> 
+                            <td><img src="tail.jpg" class="coins coins-editable" title="Tail" /></td>
                         </tr>
                     </tbody>
-                </table> 
+                </table>
+                <table class="table table-condensed">
+                    <thead><tr><td colspan="9"><b>Solution</b></td></tr></thead>
+                    <tbody id="solution"></tbody>
+                </table>
             </div>
         </div> 
     </div>
@@ -106,18 +112,20 @@
                 dataType: "json",
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
                 success: function (result, textStatus, jqXHR) {
-                    $('#init').nextAll().remove();
+                    result.reverse();
+                    $('#solution').empty();
+
                     $.each(result, function (i, coins) {
                         var tr = $('<tr></tr>'); 
                         $.each(coins, function (j, value) {
                             if (value) {
-                                tr = tr.add("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
+                                tr.append("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
                             }
                             else {
-                                tr = tr.add("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
+                                tr.append("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
                             }
                         });
-                        $('#init').after(tr);
+                        $('#solution').append(tr);
                     });
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
