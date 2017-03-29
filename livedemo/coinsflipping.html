@@ -101,14 +101,14 @@
             $.ajax({
                 method: "POST",
                 url: "https://heuristic-suite.azurewebsites.net/api/coinsflipping",
+                contentType: "application/json",
                 data: JSON.stringify(data),
                 dataType: "json",
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
                 success: function (result, textStatus, jqXHR) {
                     $('#init').nextAll().remove();
                     $.each(result, function (i, coins) {
-                        var tr = $('<tr></tr>');
-
+                        var tr = $('<tr></tr>'); 
                         $.each(coins, function (j, value) {
                             if (value) {
                                 tr.add("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
