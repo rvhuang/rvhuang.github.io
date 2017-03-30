@@ -66,8 +66,22 @@
                     </tbody>
                 </table>
                 <table class="table table-condensed">
-                    <thead><tr><td colspan="9"><b>Solution</b></td></tr></thead>
-                    <tbody id="solution"></tbody>
+                    <thead>
+                        <tr><td colspan="2"><b>Solution</b></td></tr>
+                    </thead>
+                    <tbody id="solution">
+                    </tbody>
+                    <tfoot>
+                        <tr id="progress" style="display: none;">
+                            <td colspan="10">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                        Finding the solution...
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div> 
@@ -107,7 +121,9 @@
                         data.Coins.push(false);
                         break;
                 }
-            }); 
+            });
+            $('#solution').empty();
+            $('#progress').show();
             $.ajax({
                 method: "POST",
                 url: "https://heuristic-suite.azurewebsites.net/api/coinsflipping",
@@ -116,11 +132,10 @@
                 dataType: "json",
                 headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
                 success: function (result, textStatus, jqXHR) {
-                    $('#solution').empty();
                      
-                    result.shift(); // remove initial state from solution.
-                    
-                    $("img.coins-solution").fadeIn("slow");
+                    result.shift(); // remove initial state from solution. 
+
+                    $('#progress').hide(); 
                     $.each(result, function (i, coins) { 
                         var tr = $('<tr class=\"solution\"></tr>'); 
                         $.each(coins, function (j, value) {
@@ -134,15 +149,14 @@
                         $('#solution').append(tr);
                     });
                     if (result.length > 0) {
-                        $("tr.solution:first").fadeIn({ complete: solutionAnimationCallback });
-                    } else {
-                        var tr = $('<tr></tr>');
-                        tr.append("<td>No solution is found.</td>");
-                        $('#solution').append(tr);
+                        $('tr.solution:first').fadeIn({ complete: solutionAnimationCallback });
+                    } else { 
+                        $('#solution').append('<tr><td colspan=\"10\">No solution is found.</td></tr>');
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    // TODO
+                    $('#progress').hide(); 
+                    $('#solution').append('<tr><td colspan=\"10\">An error has occurred.</td></tr>');
                 }
             });
         });
