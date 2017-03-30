@@ -20,6 +20,10 @@
         img.coins-editable {
             cursor: pointer;
         }
+
+        tr.solution {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -28,12 +32,12 @@
             <div class="col-lg-8">
                 <h1>Coins Flipping Live Demo</h1>
                 <p>
-                    This example demonstrates how the game AI solves the coins flipping puzzle.
-                    The puzzle is inspired by <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
+                    This example demonstrates how the game AI implemented in A* search algorithm solves the coins flipping puzzle with minimum steps.
+                    The puzzle is based on one of questions at <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
                     Game AI is run on <a href="https://azure.microsoft.com" target="_blank">Azure Functions</a>.
-                    Source code of console implementation can be seen on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.<br /><br /> 
+                    Console implementation source code can be viewed on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.<br /><br /> 
                     <b>Puzzle Rule</b><br />
-                    Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.<br /><br />
+                    The puzzle consists of ten coins. Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.<br /><br />
                 </p>
             </div>
         </div>
@@ -115,8 +119,10 @@
                     $('#solution').empty();
                      
                     result.shift(); // remove initial state from solution.
+                    
+                    $("img.coins-solution").fadeIn("slow");
                     $.each(result, function (i, coins) { 
-                        var tr = $('<tr></tr>'); 
+                        var tr = $('<tr class=\"solution\"></tr>'); 
                         $.each(coins, function (j, value) {
                             if (value) {
                                 tr.append("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
@@ -127,7 +133,9 @@
                         });
                         $('#solution').append(tr);
                     });
-                    if (result.length == 0) {
+                    if (result.length > 0) {
+                        $("tr.solution:first").fadeIn({ complete: solutionAnimationCallback });
+                    } else {
                         var tr = $('<tr></tr>');
                         tr.append("<td>No solution is found.</td>");
                         $('#solution').append(tr);
@@ -138,6 +146,11 @@
                 }
             });
         });
+
+        function solutionAnimationCallback() {
+            $(this).next("tr.solution").fadeIn({ complete: solutionAnimationCallback });
+        }
+
     </script>
     <script>
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
