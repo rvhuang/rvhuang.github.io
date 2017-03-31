@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Coins Flipping Live Demo - Robert V. Huang's Home Page</title>
-    <!-- Bootstrap -->
+    <title>Coins Flipping AI Live Demo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
     <style>
+        .page-header{
+            padding-top: 20px;
+        }
         img.coins {
             display: inline-block;
             width: 6vw;
@@ -16,11 +18,9 @@
             height: 6vw;
             max-height: 64px;
         }
-
         img.coins-editable {
             cursor: pointer;
         }
-
         tr.solution {
             display: none;
         }
@@ -28,16 +28,30 @@
 </head>
 <body>
     <div class="container" id="page_cover"> 
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#explanation">Explanation</a></li>
+                    <li role="presentation"><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <h1 id="top" class="text-muted">Coins Flipping AI Live Demo</h1>
+        </div>    
         <div class="row">
             <div class="col-lg-8">
-                <h1>Coins Flipping Live Demo</h1>
+                <h3>Overview</h3>
                 <p>
                     This example demonstrates how the game AI implemented in A* search algorithm solves the coins flipping puzzle with minimum steps.
                     The puzzle is based on one of questions at <a href="https://brilliant.org/practice/flipping-pairs/?chapter=introduction-to-joy" target="_blank">Brilliant.org</a>.
                     Game AI is run on <a href="https://azure.microsoft.com" target="_blank">Azure Functions</a>.
-                    Console implementation source code can be viewed on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.<br /><br /> 
-                    <b>About The Puzzle</b><br />
-                    The puzzle consists of ten coins. Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.<br /><br />
+                </p>
+                <p>
+                    <label>Puzzle Rule</label><br />
+                    The puzzle consists of ten coins. Only a pair of adjacent coins is allowed to be flipped over at same time. All ten coins that are head is the goal.
+                </p>
+                <p>
+                    To play the live demonstration, click the coins below to edit initial state and hit <span class="glyphicon glyphicon-play"></span> button to run the algorithm.
                 </p>
             </div>
         </div>
@@ -46,8 +60,12 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <td colspan="9"><b>Click Coins to Edit Initial State</b></td>
-                            <td><button class="btn pull-right" title="Run" id="run"><span class="glyphicon glyphicon-play"></span></button></td>
+                            <td colspan="8" style="vertical-align: bottom"><b>Initial State</b></td>
+                            <td colspan="2" style="vertical-align: bottom">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" title="Run" id="run"><span class="glyphicon glyphicon-play"></span></button>
+                                </div>
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,8 +86,10 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <td colspan="2"><b>Solution</b></td>
-                            <td colspan="8"></td>
+                            <td colspan="2" style="vertical-align: bottom"><b>Solution</b></td>
+                            <td colspan="8">
+                                <div class="pull-right"><span id="counter"></span></div>
+                            </td>
                         </tr>
                     </thead>
                     <tbody id="solution"></tbody>
@@ -88,78 +108,127 @@
             </div>
         </div> 
     </div>
+    <div id="page_detail" class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 id="explanation" class="page-header">Heuristic Function Explanation</h3>
+                <p>As described in Overview, the game AI is implemented in A* search algorithm which estimates each step with the function below:
+                </p>
+                <blockquote>                    
+                    <p>$f(n) = {g(n) + h(n)}$</p>     
+                </blockquote>
+                <p>where $g(n)$ is the total number of steps needed to reach the current step, and $h(n)$ is the sum of two types of evaluation:</p>
+                <blockquote>
+                    <p>$h(n) = {c(n) + t(n)}$</p>    
+                </blockquote>
+                <p>
+                    Both evaluation functions are based on the number of heads. The $c(n)$ is the maximum number of <b>continuity</b> and $t(n)$ is total number of heads.<br />
+                </p>
+                <p>Examples of evaluation: (&#9405; is head and &#9417; is tail)</p>
+                <p class="lead"><span style="color: darkred;">&#9405;</span>&#9417;<span style="color: darkred;">&#9405;&#9405;</span>&#9417;<u style="color: darkred">&#9405;&#9405;&#9405;&#9405;&#9405;</u></p>
+                <p>$c(n) = 5$<br />$t(n) = 8$</p>
+                <p>&nbsp;</p>
+                <p class="lead"><span style="color: darkred;">&#9405;&#9405;</span>&#9417;<u style="color: darkred">&#9405;&#9405;&#9405;&#9405;</u>&#9417;&#9417;&#9417;</p><p>$c(n) = 4$<br />$t(n) = 6$</p>
+                <p>&nbsp;</p>
+                <p>With the two evaluation functions, the algorithm is able to determine the best next move in the open list.</p>
+            </div>
+            <div class="col-lg-2 col-lg-offset-2">
+                <p class="pull-right page-header"><a href="#">Back to Top</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="page_about" class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 id="about" class="page-header">About The Project</h3>
+                <p>
+                    The live demonstration is an example of <a href="https://rvhuang.github.io/heuristic-suite" target="_blank">Heuristic Suite</a> - an experimental implementation of a series of heuristic algorithms in generic programming.
+                    The implementation in console application is also available and can be viewed on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.
+                </p>
+            </div>
+            <div class="col-lg-2 col-lg-offset-2">
+                <p class="pull-right page-header"><a href="#">Back to Top</a></p>
+            </div>
+        </div>
+    </div>
     <footer class="footer">
         <div class="container">
             <hr />
-            <span class="text-muted">© <a href="/">Robert Vandenberg Huang</a></span> 
+            <span class="text-muted">© <a href="mailto:rvh.omni@gmail.com">Robert Vandenberg Huang</a></span> 
             <div class="row">&nbsp;</div>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML" async></script>
     <script>  
-        $("#page_cover").css("min-height", $(window).height());
-        $("img.coins-editable").click(function () {
-            switch ($(this).attr("src")) {
-                case "head.jpg":
-                    $(this).attr("src", "tail.jpg");
-                    $(this).attr("title", "Tail");
-                    break;
-                case "tail.jpg":
-                    $(this).attr("src", "head.jpg");
-                    $(this).attr("title", "Head");
-                    break;
-            }
-        });
-        $("#run").click(function () {
-            var data = { Coins: [] };
-
-            $("img.coins-editable").each(function () {
+        $(document).ready(function () {
+            $("#page_cover, #page_detail").css("min-height", $(window).height());
+            $("img.coins-editable").click(function () {
                 switch ($(this).attr("src")) {
                     case "head.jpg":
-                        data.Coins.push(true);
+                        $(this).attr("src", "tail.jpg");
+                        $(this).attr("title", "Tail");
                         break;
                     case "tail.jpg":
-                        data.Coins.push(false);
+                        $(this).attr("src", "head.jpg");
+                        $(this).attr("title", "Head");
                         break;
                 }
             });
-            $('#solution').empty();
-            $('#progress').show();
-            $.ajax({
-                method: "POST",
-                url: "https://heuristic-suite.azurewebsites.net/api/coinsflipping",
-                contentType: "application/json",
-                data: JSON.stringify(data),
-                dataType: "json",
-                headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
-                success: function (result, textStatus, jqXHR) {
-                     
-                    result.shift(); // remove initial state from solution. 
+            $("#run").click(function () {
+                var data = { Coins: [] };
 
-                    $('#progress').hide(); 
-                    $.each(result, function (i, coins) { 
-                        var tr = $('<tr class=\"solution\"></tr>'); 
-                        $.each(coins, function (j, value) {
-                            if (value) {
-                                tr.append("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
-                            }
-                            else {
-                                tr.append("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
-                            }
-                        });
-                        $('#solution').append(tr);
-                    });
-                    if (result.length > 0) {
-                        $('tr.solution:first').fadeIn({ complete: solutionAnimationCallback });
-                    } else { 
-                        $('#solution').append('<tr><td colspan=\"10\">No solution is found.</td></tr>');
+                $("img.coins-editable").each(function () {
+                    switch ($(this).attr("src")) {
+                        case "head.jpg":
+                            data.Coins.push(true);
+                            break;
+                        case "tail.jpg":
+                            data.Coins.push(false);
+                            break;
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    $('#progress').hide(); 
-                    $('#solution').append('<tr><td colspan=\"10\">An error has occurred.</td></tr>');
-                }
+                });
+                $('#solution').empty();
+                $('#progress').show();
+                $.ajax({
+                    method: "POST",
+                    url: "https://heuristic-suite.azurewebsites.net/api/coinsflipping",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    headers: { "x-functions-key": "L7v6uzsNTmAEDX3rxEntwFNaMc/I1hAVAgq93l4SJnkxt2F899v8rg==" },
+                    success: function (result, textStatus, jqXHR) {
+
+                        result.shift(); // remove initial state from solution. 
+
+                        $('#progress').hide();
+                        $.each(result, function (i, coins) {
+                            var tr = $('<tr class=\"solution\"></tr>');
+                            $.each(coins, function (j, value) {
+                                if (value) {
+                                    tr.append("<td><img src=\"head.jpg\" class=\"coins\" title=\"Head\"/></td>");
+                                }
+                                else {
+                                    tr.append("<td><img src=\"tail.jpg\" class=\"coins\" title=\"Tail\"/></td>");
+                                }
+                            });
+                            $('#solution').append(tr);
+                        });
+                        if (result.length > 0) {
+                            $('tr.solution:first').fadeIn({ complete: solutionAnimationCallback });
+                            $('#counter').text(result.length + " Step(s)");
+                        } else {
+                            $('#solution').append('<tr><td colspan=\"10\">No solution is found.</td></tr>');
+                            $('#counter').text("");
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('#progress').hide();
+                        $('#solution').append('<tr><td colspan=\"10\">An error has occurred.</td></tr>');
+                        $('#counter').text("");
+                    }
+                });
             });
         });
 
@@ -176,6 +245,9 @@
 
          ga('create', 'UA-92592725-1', 'auto');
          ga('send', 'pageview');
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
 </body>
 </html>
