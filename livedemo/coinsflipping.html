@@ -122,9 +122,7 @@
                 <blockquote>
                     <p>$h(n) = {c(n) + t(n)}$</p>    
                 </blockquote>
-                <p>
-                    Both evaluation functions are based on the number of heads. The $c(n)$ is the maximum number of <b>continuity</b> and $t(n)$ is total number of heads.<br />
-                </p>
+                <p>Both evaluation functions are based on the number of heads. The $c(n)$ is the maximum number of <b>continuity</b> and $t(n)$ is total number of heads.<br /></p>
                 <p>Examples of evaluation: (&#9405; is head and &#9417; is tail)</p>
                 <p class="lead"><span style="color: darkred;">&#9405;</span>&#9417;<span style="color: darkred;">&#9405;&#9405;</span>&#9417;<u style="color: darkred">&#9405;&#9405;&#9405;&#9405;&#9405;</u></p>
                 <p>$c(n) = 5$, $t(n) = 8$</p>
@@ -147,7 +145,7 @@
                     The live demonstration is an example of <a href="https://rvhuang.github.io/heuristic-suite" target="_blank">Heuristic Suite</a> - an experimental implementation of a series of heuristic algorithms in generic programming.
                     The implementation in console application is also available and can be viewed on <a href="https://github.com/rvhuang/heuristic-suite/tree/master/AlgorithmForce.Example.CoinsFlipping" target="_blank">GitHub</a>.
                 </p>
-				<p>&nbsp;</p>
+		<p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
             </div>
@@ -174,10 +172,12 @@
                     case "head.jpg":
                         $(this).attr("src", "tail.jpg");
                         $(this).attr("title", "Tail");
-                        break;
+                        $('#run').prop('disabled', false);
+		        break;
                     case "tail.jpg":
                         $(this).attr("src", "head.jpg");
                         $(this).attr("title", "Head");
+                        $('#run').prop('disabled', false);
                         break;
                 }
             });
@@ -194,6 +194,7 @@
                             break;
                     }
                 });
+		$('#run').prop('disabled', true);
                 $('#solution').empty();
                 $('#progress').show();
                 $.ajax({
