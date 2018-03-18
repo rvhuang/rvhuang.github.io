@@ -6,34 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>Welcome - Robert V. Huang's Home Page</title>
-    <!-- Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
-        #section_summary, #section_career, #section_side_project, #section_articles, #section_personal, #section_contact {
-            padding-top: 50px;
+        [v-cloak] {
+            display: none;
         }
-
-        #page_cover {
-            position: relative;
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s
+        } 
+        .fade-enter, .fade-leave-to {
+            opacity: 0
         }
-
-        #page_cover::before {
-                background-image: url('https://drive.google.com/uc?export=view&id=0B9isNctAxF3DLUd4QWJIdnhiNTA');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-position: right; 
-                opacity: 0.4;
-                z-index: -1;
-                content: "";
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%; 
-            }
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to {
+            transform: translateX(10px);
+            opacity: 0;
+        }
     </style> 
-    <script>
+    <!-- <script>
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -41,309 +40,96 @@
 
          ga('create', 'UA-92592725-1', 'auto');
          ga('send', 'pageview');
-    </script>
+    </script> -->
 </head>
 <body data-spy="scroll" data-target=".navbar">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Robert V. Huang</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#section_summary">Summary</a></li>
-                    <li><a href="#section_career">Career</a></li>
-                    <li><a href="#section_side_project">Projects</a></li>
-                    <li><a href="#section_articles">Articles</a></li>
-                    <li><a href="#section_personal">Personal</a></li>
-                    <li><a href="#section_contact">Contact</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse  -->
+    <div id="main" class="container">
+        <div class="page-header">
+            <h1 class="hidden-xs"><em>Robert V. Huang's Portal</em></h1>
+            <h3 class="visible-xs"><em>Robert V. Huang's Portal</em></h3>
+            <p>The home page of Robert Vandenberg Huang</p>
         </div>
-        <!-- /.container -->
-    </nav><br />
-    <header id="section_home">
-        <div class="container-fluid">
-            <div id="page_cover">
-                <div class="col-md-6">
-                    <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-                    <div class="page-header">
-                        <h1>Hello &#x1F60A;</h1>
-                    </div>
-                    <p class="lead"><em>The Home Page of Robert Vandenberg Huang</em></p>
-                    <p><em>Drummer, Software Developer, Video Game Enthusiast</em></p>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div id="section_summary" class="container-fluid">
-        <h2>Summary</h2>
-        <hr />
-        <div class="row">
+        <div class="row" v-cloak>
             <div class="col-md-6">
-                <p>A boy from Taipei City, Taiwan. Have been working on software development since graduating from junior high school. Love sharing knowledge with people, learning new things and having interaction with developer community.</p>
-                <p>I enjoy writing down my understandings as I have completed a few <a href="#section_articles">articles</a>. I also have various experimental repositories at <a href="https://github.com/rvhuang/" target="_blank">GitHub</a> to verify my ideas.</p>
+                <h3>About Me</h3>
+                <p>Senior .NET back-end developer, drummer, game addict, English learner, Jazz fan from Taipei city, Taiwan.</p>
+                <p>A boy who never grows up! Life is too short, why not having some fun?</p>
+                <p>Feel free to ask me questions about my articles and videos.</p>
                 <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Technical Stack</p>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-unstyled">
-                    <li>Web API Development with ASP.NET Web API, WCF RESTful Service and Node.js</li>
-                    <li>Web API Client Library Development with .NET Framework and .NET Core on NuGet</li>
-                    <li>Web Application Development with ASP.NET MVC and Express</li>
-                    <li>Windows Service Application Development with .NET Framework</li>
-                </ul>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Fields</p>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-unstyled">
-                    <li>Customer Relationship Management</li>
-                    <li>Event Messaging System</li>
-                    <li>Know Your Customer</li>
-                </ul>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead"><ins title="Not really good at though.">Interests</ins></p>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-unstyled">
-                    <li>Developer Experience</li>
-                    <li>Game AI</li>
-                    <li>Caching Strategies</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="section_career" class="container-fluid">
-        <h2>Career</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">At <a href="http://www.xuenn.com/" target="_blank" style="text-decoration: none !important;">Xuenn</a></p>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-unstyled">
-                    <li>The design and implementation of Salesforce and 188BET back office system integration.</li>
-                    <li>The design and implementation of 188BET customer messaging system.</li>
-                    <li>The design and implementation of 188BET customer messaging Web API/WCF client library.</li>
-                </ul>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">At <a href="http://www.iisigroup.com/" target="_blank" style="text-decoration: none !important;" title="International Integrated Systems, Inc">IISI</a></p>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-unstyled">
-                    <li>The design and implementation of event messaging system for enterprise IP surveillance solution.</li>
-                    <li>The design and implementation of event messaging WCF client library.</li>
-                    <li>The design and implementation of third-party camera integration framework for enterprise IP surveillance solution.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="section_side_project" class="container-fluid">
-        <h2>Projects</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-6">
-                <p>I have been working on a few experimental projects that are not so relevant to my career because I have been wanting to try different fields for a while. I enjoy studying these topics and sharing my thoughts with people.</p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Game AI</p>
-            </div>
-            <div class="col-md-5">
+                <h3>Follow Me</h3>
                 <p>
-                    <a href="https://rvhuang.github.io/heuristic-suite" target="_blank">Heuristic Suite</a><br />
-                    Heuristic Suite is an experimental implementation of a series of heuristic algorithms in generic programming. The project is aimed to provide an infrastructure that can be applied to any puzzle - as long as the puzzle can be resolved with the algorithm.
-                    The repository consists of source code and a few of examples, including classic path finding, 8-puzzle and <a href="/livedemo/coinsflipping.html" title="Click Here to View Live Demo">coins flipping</a>. 
+                    <a style="margin:10px;" href="mailto:rvh.omni@gmail.com" target="_blank" title="Email">
+                        <svg height="32" class="octicon octicon-mail" viewBox="0 0 14 16" version="1.1" width="28" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"></path>
+                        </svg>
+                    </a>
+                    <a style="margin:10px;" href="https://github.com/rvhuang" target="_blank" title="GitHub">
+                        <svg height="32" class="octicon octicon-logo-github" viewBox="0 0 45 16" version="1.1" width="90" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 0 0-.146-.18zm23.696-2.2c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61H33.84c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path>
+                        </svg>
+                    </a>
+                    <a style="margin:10px;" href="https://gist.github.com/rvhuang" target="_blank" title="Gist">
+                        <svg height="32" class="octicon octicon-logo-gist" viewBox="0 0 25 16" version="1.1" width="50" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4.7 8.73h2.45v4.02c-.55.27-1.64.34-2.53.34-2.56 0-3.47-2.2-3.47-5.05 0-2.85.91-5.06 3.48-5.06 1.28 0 2.06.23 3.28.73V2.66C7.27 2.33 6.25 2 4.63 2 1.13 2 0 4.69 0 8.03c0 3.34 1.11 6.03 4.63 6.03 1.64 0 2.81-.27 3.59-.64V7.73H4.7v1zm6.39 3.72V6.06h-1.05v6.28c0 1.25.58 1.72 1.72 1.72v-.89c-.48 0-.67-.16-.67-.7v-.02zm.25-8.72c0-.44-.33-.78-.78-.78s-.77.34-.77.78.33.78.77.78.78-.34.78-.78zm4.34 5.69c-1.5-.13-1.78-.48-1.78-1.17 0-.77.33-1.34 1.88-1.34 1.05 0 1.66.16 2.27.36v-.94c-.69-.3-1.52-.39-2.25-.39-2.2 0-2.92 1.2-2.92 2.31 0 1.08.47 1.88 2.73 2.08 1.55.13 1.77.63 1.77 1.34 0 .73-.44 1.42-2.06 1.42-1.11 0-1.86-.19-2.33-.36v.94c.5.2 1.58.39 2.33.39 2.38 0 3.14-1.2 3.14-2.41 0-1.28-.53-2.03-2.75-2.23h-.03zm8.58-2.47v-.86h-2.42v-2.5l-1.08.31v2.11l-1.56.44v.48h1.56v5c0 1.53 1.19 2.13 2.5 2.13.19 0 .52-.02.69-.05v-.89c-.19.03-.41.03-.61.03-.97 0-1.5-.39-1.5-1.34V6.94h2.42v.02-.01z"></path>
+                        </svg>
+                    </a>
+                    <a style="margin:10px;" href="https://medium.com/@rvh.omni/" target="_blank" title="Medium">
+                        <svg width="32" height="32" viewBox="0 0 195 195" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Monogram" fill-rule="nonzero">
+                                    <rect id="Rectangle-path" fill="#12100E" x="0" y="0" width="195" height="195"></rect>
+                                    <path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z" id="Shape" fill="#FFFFFF"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>                    
                 </p>
-                <p>
-                    <img src="http://www.8puzzle.com/images/8_puzzle_start_state_a.png" class="img-thumbnail" />
-                    <img src="http://www.8puzzle.com/images/8_puzzle_goal_state_a.png" class="img-thumbnail" />
-                </p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Threading</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://rvhuang.github.io/Scheduler/" target="_blank">Scheduler</a><br />
-                    A thread-safe asynchronous producer-consumer model.
-                </p>
-                <p><img class="img-responsive img-thumbnail" src="https://raw.githubusercontent.com/rvhuang/Scheduler/master/doc/images/scheduler-overview.png" alt="Scheduler" /></p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">String Searching</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://rvhuang.github.io/kmp-algorithm/" target="_blank">KMP Algorithm .NET</a><br />
-                    An implementation of Knuth–Morris–Pratt algorithm optimized for .Net platform that can be applied to all generic collections, as long as the element is euqatable.
-                </p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Misc</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://github.com/rvhuang/snowflake-lite" target="_blank">Snowflake Lite</a><br />
-                    A lightweight implementation of Twitter's Snowflake algorithm on .NET platform.
-                </p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-    </div>
-    <div id="section_articles" class="container-fluid">
-        <h2>Articles</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-6">
-                <p>Most of my articles are published on CodeProject.</p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Project</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://www.codeproject.com/Articles/1173541/A-Walkthrough-to-Implement-Game" target="_blank">A Walkthrough to Implement 2048 Game</a><br />
-                    An introduction to make a simple 2048 console application in C#.
-                </p>
-                <p>
-                    <img src="https://drive.google.com/uc?export=view&id=0B4Lp9dAeZ6OjWHdVNlVXbFNEU2c" class="img-thumbnail" /> 
-                </p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">HTTP Related</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://www.codeproject.com/Articles/1180464/Large-JSON-Array-Streaming-in-ASP-NET-Web-API" target="_blank">Large JSON Array Streaming in ASP.NET Web API</a><br />
-                    An example about streaming large JSON array in ASP.NET Web API and HTTP chunked transfer encoding.
-                </p>
-                <p>
-                    <a href="https://www.codeproject.com/Articles/813480/HTTP-Partial-Content-In-Node-js" target="_blank">HTTP 206 Partial Content In Node.js</a><br />
-                    A step-by-step workthrough of HTTP 206 implementation in Node.js.
-                </p>
-                <p>
-                    <a href="https://www.codeproject.com/Articles/820146/HTTP-Partial-Content-In-ASP-NET-Web-API-Video" target="_blank">HTTP 206 Partial Content In ASP.NET Web API - Video File Streaming</a><br />
-                    A step-by-step walkthrough of implementing the HTTP 206 Partial Content.
-                </p>
-                <p>
-                    <a href="https://www.codeproject.com/Articles/870979/HTTP-Not-Modified-In-ASP-NET-Web-API" target="_blank">HTTP 304 Not Modified In ASP.NET Web API</a><br />
-                    An example project about how to "manually" control HTTP caching in Web API.
-                </p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <p class="lead">Misc</p>
-            </div>
-            <div class="col-md-5">
-                <p>
-                    <a href="https://www.codeproject.com/Tips/876974/A-Virtualized-Way-to-Describe-the-Naming-Conventio" target="_blank">A Virtualized Way to Describe the Naming Convention</a><br />
-                    A general discussion of building the naming rule for your team.
-                </p>
-                <p>
-                    <a href="https://www.codeproject.com/Tips/729239/Using-Morris-Pratt-String-Searching-In-Byte-Arrays" target="_blank">Using Morris Pratt String Searching In Byte Arrays</a><br />
-                     A short discussion of string searching in raw data.
-                </p>
-                <p>
-                    <a href="https://www.codeproject.com/Tips/1037705/Make-Your-ConfigurationElementCollection-Type-Expl" target="_blank">Make Your ConfigurationElementCollection Type-Explicit</a><br />
-                    A short tip about how to enhance type definition of your <a href="https://msdn.microsoft.com/en-us/library/system.configuration.configurationelementcollection(v=vs.110).aspx" target="_blank">ConfigurationElementCollection</a>.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div id="section_personal" class="container-fluid">
-        <h2>Personal</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-6">
-                <p>I started learning and playing drums since 11. I also have certain skills of playing various Afro-Cuban percussions which are self-taught. Jazz music and video game music from Mario and Pokemon series are my favorite. One of my life goals is to play drums/percussion and make a <strong><a href="https://youtu.be/FBWLqDQyQwA" target="_blank">video</a></strong> in every workplace that I have stayed.</p>
-                <p>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/I1ii1G94F5U" frameborder="0" allowfullscreen></iframe></div>
-            </div>
-        </div>
-    </div>
-    <div id="section_contact" class="container-fluid">
-        <h2>Contact</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-6">
-                <p>
-                    <a class="btn" href="mailto:rvh.omni@gmail.com" target="_blank" title="Email"><svg height="32" class="octicon octicon-mail" viewBox="0 0 14 16" version="1.1" width="28" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"></path></svg></a>
-                    <a class="btn" href="https://github.com/rvhuang" target="_blank" title="GitHub"><svg height="32" class="octicon octicon-logo-github" viewBox="0 0 45 16" version="1.1" width="90" aria-hidden="true"><path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 0 0-.146-.18zm23.696-2.2c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61H33.84c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path></svg></a>
-                    <a class="btn" href="https://gist.github.com/rvhuang" target="_blank" title="Gist"><svg height="32" class="octicon octicon-logo-gist" viewBox="0 0 25 16" version="1.1" width="50" aria-hidden="true"><path fill-rule="evenodd" d="M4.7 8.73h2.45v4.02c-.55.27-1.64.34-2.53.34-2.56 0-3.47-2.2-3.47-5.05 0-2.85.91-5.06 3.48-5.06 1.28 0 2.06.23 3.28.73V2.66C7.27 2.33 6.25 2 4.63 2 1.13 2 0 4.69 0 8.03c0 3.34 1.11 6.03 4.63 6.03 1.64 0 2.81-.27 3.59-.64V7.73H4.7v1zm6.39 3.72V6.06h-1.05v6.28c0 1.25.58 1.72 1.72 1.72v-.89c-.48 0-.67-.16-.67-.7v-.02zm.25-8.72c0-.44-.33-.78-.78-.78s-.77.34-.77.78.33.78.77.78.78-.34.78-.78zm4.34 5.69c-1.5-.13-1.78-.48-1.78-1.17 0-.77.33-1.34 1.88-1.34 1.05 0 1.66.16 2.27.36v-.94c-.69-.3-1.52-.39-2.25-.39-2.2 0-2.92 1.2-2.92 2.31 0 1.08.47 1.88 2.73 2.08 1.55.13 1.77.63 1.77 1.34 0 .73-.44 1.42-2.06 1.42-1.11 0-1.86-.19-2.33-.36v.94c.5.2 1.58.39 2.33.39 2.38 0 3.14-1.2 3.14-2.41 0-1.28-.53-2.03-2.75-2.23h-.03zm8.58-2.47v-.86h-2.42v-2.5l-1.08.31v2.11l-1.56.44v.48h1.56v5c0 1.53 1.19 2.13 2.5 2.13.19 0 .52-.02.69-.05v-.89c-.19.03-.41.03-.61.03-.97 0-1.5-.39-1.5-1.34V6.94h2.42v.02-.01z"></path></svg></a>
-                    <a class="btn" href="https://medium.com/@rvh.omni/" target="_blank" title="Medium"><img class="img-responsive" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAEv0lEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAABg9uwCtnEkjALwMTOLj5mZGcXHZ+hi6SBV7sSHwTIzc2vHTrYcKDNT6JiZmSFzrrSzGm0aOd7UbrQzIz2xAv+nmfhN4ntRW7Zcvn3HjlydTndjvH02TnDQHZ29H/Q4PTPDw8NX4AFCM+89RTFASigxMfkdvV5/dzx8Ll4UH2rnRQDDC45Qd59reXx8/PL9GmQ3BprQTgkmLe2FuzbrMwnC9JHtvP09iIHGJjpCPU7X0tjY9GWYgMCwoZ1JyW9vBoyEYUERIsH0utyLIyMLl2ICgsKkvK3TPX+HNruj6wLOJv6FDF8epg/CYACCwiQmprylNoyEMSSHEPEok2Dck5OXYAISBnPbhh9VNjurECLCjnEtQBgMQJCjLDHlzY2C6ejoOIHjxS9jBUFhuiEMHiDIjklKeUOv198S01HF28tjAJA7yuYHx8cvxgIEhqLZUFJySkAQhMMUdw7ecZ00vP/UAEF7jPTjP44FCAzDbgFGs/UlJe8PADio3SYuqokB4/IMAPxATNbfzeacs6LvHA6dFhg2ewdYXl3FD8RgtACDydIXXefoO0Ma1k9agIxNTIFVnx9TEClmc/oj8o+5IqcFRnePcw0DaxAp1k/KysqOifS+NpvjXi0wOJsdzC8tE5DdR1feeu/pdDoP53j7W1qADA6PQgwCIuUfkykz7FaWF+yvaoHh6OgCK14fAdkrUwCAA/dgdHScIw3rDy1AZmbnUQwCAmMyWROR+yq3Vp0DhSAgSKRu8m16evrJPC8+rmXnCAchIOhjcDPHi59p2TnCQ0DQXRKqa2hWHaOr1xmGQEAiJD0jR/3OsbgsB0JA0JSWV6ndOZSAEBCTOR00t3AqdY71EAiIbHLzCjccZHp2LjIEAZFPTW3jhmE4Pf0yEARENpb0LNDG2WLGEOy7wNKKl4DEAgJTXFKhSudQDkJAYDcBjU1tanUOAkIzCaFoMWCycvJU6BwwBOQ3JRgwldW1ikEGhmQ7BwGhaPaHguLSBmtG1t9KQMyWDNDSxkffOXbBziEbAgL/EVQKU1hYutGdA4aAwCUIwpFFRaWN1vToYOobWuQ7h7t/XzEICApTUFzWJAeTkbV2+Sgo6BzKQkAiwFismf9EQimrqI4IMjoxua8QBEQOprCwpAWFQS8fW1q58M7R44wFgoBEC5NfVBYGk5tftE7nWCIgaoPA1dPTc1RBUWkrClNb14T8zzECB4oFyC+bDQJXc7PnaOkoa1uDsaZngzZOgJ0DHxBpiK3agCiHqaiq/X56BnYOTEC2bNlyMkUzc/EEAlcwCA7zBgLPeH3+T7AAgctgMBxEsSwlwbwRRyAITBCBwQAEhWGYLTSEiRcQuN55553DfYHAs9JgP8UCBIWhaZaRBvymRiDKYXzB5xTDICBYwKAgWsNgAYIUuIMphmGfoti34gkEhVn1B3WrvsBnWICgMDSdkABh4gUErg8++OAICIMDSBgMRTNv7wUS3OzPBmG8/mDaqj/wOYrh9fl9+x1GOAy75SmanZdwvll7Qoujjwd3TKoEMeD1BQb9/jev/b89OBAAAABgGHR/6isMoBodAAAAAAAAAAAAHCrtm8/2t+8FAAAAAElFTkSuQmCC"></a>
-                    <span class="btn">
-                        <a href="https://twitter.com/intent/tweet?screen_name=reasserthuang" class="twitter-mention-button" data-show-count="false">Tweet to @reasserthuang</a><br />
-                    </span>
+                <p>      
+                    <div class="g-ytsubscribe" data-channelid="UCh1gUGVKzKy5pDNPytBUZHg" data-layout="default" data-count="hidden"></div>&nbsp;
+                    <a class="twitter-follow-button" href="https://twitter.com/ReassertHuang" data-size="large" data-show-count="false">Follow @ReassertHuang</a>
                 </p>
                 <p>
                     <iframe src="https://www.codeproject.com/members/flair/4973163" height="200" width="250" scrolling="no" frameborder="0"></iframe>
                 </p>
             </div>
+            <div class="col-md-6">
+                <h3>Activity Stream</h3>
+                <ul class="list-unstyled">                    
+                    <li v-if="feeds.length > 0" v-for="item in feeds">
+                        <p>
+                            <small>An article is published at <em>{{ getDomain(item) }}</em>, {{ getPublishDate(item) }} </small><br/>
+                            <h4><a v-bind:href="item.Link" target="_blank">{{ item.Title }}</a></h4>
+                            <button v-for="category in item.Categories" class="btn btn-default btn-xs" style="margin-right: 2px" >{{ category }}</button>
+                            <hr />
+                        </p>
+                    </li>
+                </ul>
+                <p v-if="feeds.length == 0" class="text-center">
+                    <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
+                </p>
+            </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <hr />
-            <span class="text-muted">© Robert Vandenberg Huang</span>
-            <div class="row">&nbsp;</div>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://platform.twitter.com/widgets.js" async></script>
     <script>
-        $('#navbar').on('click', function () {
-            $('.navbar-toggle').click();
+        var app = new Vue({
+            el: "#main",
+            data: {
+                feeds: []
+            },
+            methods: {
+                getDomain: function (item) {
+                    return new URL(item.Link).hostname;
+                },
+                getPublishDate: function(item) {
+                    return new Date(item.PublishDate).toDateString();
+                }
+            }
         });
-        $("#page_cover, #section_summary, #section_career, #section_side_project, #section_articles, #section_personal, #section_contact").css("min-height", $(window).height());
+        $.post("https://rvh-feeds.azurewebsites.net/api/HttpTriggerCSharp1?code=uDTEwgJ6E2IKs4diQ0IpW9/cIGoc1B6dNHSWEcDxttj15NCSNa0efg==", function (data) {
+            app.feeds = data;
+        });
     </script>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
