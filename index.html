@@ -53,9 +53,12 @@
         <div class="row" v-cloak>
             <div class="col-md-6">
                 <h3>About Me</h3>
-                <p>Senior .NET back-end developer, drummer, game addict, English learner, Jazz fan from Taipei city, Taiwan.</p>
-                <p>A boy who never grows up! Life is too short, why not having some fun?</p>
-                <p>Feel free to ask me questions about my articles and videos.</p>
+                <ul>
+                    <li>Senior .NET back-end developer, drummer, gaming addict, English learner, Jazz fan from Taipei city, Taiwan.</li>
+                    <li>A boy who never grows up. Life is too short. Why not having some fun?</li>
+                    <li>A man who loves drumming, always thinking about how to bring drumset to workplace.</li>
+                    <li>Author of <a href="https://rvhuang.github.io/dotnet-ciig">.NET Collection Inferface Interactive Guide</a>.</li>
+                </ul>
                 <p>&nbsp;</p>
                 <h3>Follow Me</h3>
                 <p>
@@ -98,7 +101,7 @@
                 <ul class="list-unstyled">                    
                     <li v-if="feeds.length > 0" v-for="item in feeds">
                         <p>
-                            <small>An article is published at <em>{{ getDomain(item) }}</em>, {{ getPublishDate(item) }} </small><br/>
+                            <small>An article has been published at <em>{{ getDomain(item) }}</em>, {{ getPublishDate(item) }} </small><br/>
                             <h4><a v-bind:href="item.Link" target="_blank">{{ item.Title }}</a></h4>
                             <button v-for="category in item.Categories" class="btn btn-default btn-xs" style="margin-right: 2px" >{{ category }}</button>
                             <hr />
