@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="dark">
+
+<head>
+  <script src="color-modes.js"></script>
+  <script>
+
+    function load(src) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.addEventListener('load', resolve);
+        image.addEventListener('error', reject);
+        image.src = src;
+
+      });
+    }
+
+    const coverArt = 'background.jpg';
+    load(coverArt).then(() => {
+      document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${coverArt})`;
+      document.body.style.backgroundAttachment = 'fixed';
+
+      document.onreadystatechange = function () {
+        var state = document.readyState;
+        if (state == 'interactive') {
+          document.getElementById('contents').style.visibility = "collapse";
+        } else if (state == 'complete') {
+          setTimeout(function () {
+            document.getElementById('load').style.visibility = "collapse";
+            document.getElementById('contents').style.visibility = "visible";
+          }, 1000);
+        }
+      };
+
+      var countDownDate = new Date("2024-03-29T02:00:00.000Z").getTime();
+      var x = setInterval(function () {
+
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (distance < 0) {
+          clearInterval(x);
+        }
+      }, 1000);
+    });
+
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Desafinado de Saudade - a brand new reimagination">
+  <meta name="author" content="Robert Vandenberg Production"> 
+  <title>Desafinado de Saudade</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAIpJREFUOI3tkkEKwkAUQ98T915FqC69lifzECp4Aes1ujVuio5aOxW3BsIsJuQnEJPwC+Y1gboANsAKWALnJNu7IMkogRZIwWv5b62C+iZI4uQKPXbAqeDjwJQE5cVXzCYm+Ii/wYCBulaPaqceqg4Dy7vwvLyMLXVKhfbbBA2wB7r+bcYSVJdYww1tG48EHuTEEwAAAABJRU5ErkJggg==">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+      display: block !important;
+    }
+
+    #load {
+      z-index: 9999;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="cover.css" rel="stylesheet">
+</head>
+
+<body class="d-flex h-100 text-bg-dark">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="instagram">
+      <path
+        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+    </symbol>
+    <symbol id="facebook">
+      <path
+        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+    </symbol>
+    <symbol id="youtube">
+      <path
+        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+    </symbol>
+  </svg>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link py-1 px-0 active" href="index.html">Home</a>
+          <a class="nav-link py-1 px-0 active" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions" href="#credits">Credits</a>
+          <a class="nav-link py-1 px-0 disabled" href="#listen">Listen Now</a>
+        </nav>
+      </div>
+    </header>
+    <main id="contents" class="px-3 text-center" style="visibility: collapse;">
+      <h1>Desafinado de Saudade</h1>
+      <h4> 
+        <small>The classic, reimaginated</small>  
+      </h4>
+      <p>In April 1959, <cite>Chega de Saudade</cite>, often credited as the first bossa nova album, was
+        released. After 65 years, we are proud to release our brand new reimagination of one of the classics from the album,
+        <cite>Desafinado</cite>.
+      </p>
+      <p class="lead">Available in</p>
+      <h4 id="countdown"> </h4>
+    </main>
+    <main id="load" class="px-3 text-center">
+      <blockquote class="blockquote">
+        <p>Loading...</p>  
+      </blockquote>
+    </main>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          Credits
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <figure>
+          <figcaption>Composer</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Antonio Carlos Jobim</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Arranger</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Robert Y. R. Huang 黃昱儒</small></li>
+          </ul>
+        </figure>
+        <hr>
+        <h5>Musicians</h5>
+        <figure>
+          <figcaption>Drums</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Robert Y. R. Huang 黃昱儒</small>
+              <a class="icon-link" href="https://www.instagram.com/rvhuang.music/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+              <a class="icon-link" href="https://www.youtube.com/@RobertVandenberg" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#youtube" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Keyboards (solo), Special Guest</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Barry C. T. Huang 黃忠道</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Keyboards</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Sheng Fei Lu 呂聖斐</small>
+              <a class="icon-link" href="https://www.instagram.com/fredfred1996/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+              <a class="icon-link" href="https://www.youtube.com/@fredfred1996" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#youtube" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Percussions</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Wen Wei Chen 陳玟瑋</small>
+              <a class="icon-link" href="https://www.instagram.com/chen_wen_wei/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Percussions (chimes)</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Mika</small>
+              <a class="icon-link" href="https://www.instagram.com/mikapataflafla/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Upright Bass</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Refa Wang 王群婷</small>
+              <a class="icon-link" href="https://www.instagram.com/dbrefa/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+              <a class="icon-link" href="https://www.facebook.com/DBRefa" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#facebook" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Guitar (rhythm)</figcaption>
+          <ul class="list-unstyled">
+            <li><small>jiMMY 王芩敏</small>
+              <a class="icon-link" href="https://www.instagram.com/jimmy_0511/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Guitar (riff)</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Benjamin Holt</small>
+              <a class="icon-link" href="https://www.instagram.com/benholtjazz/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Vocal Dubbing</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Christine Chien 簡愛</small>
+              <a class="icon-link" href="https://www.instagram.com/janeeyrelove/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <hr>
+        <h5>Production</h5>
+        <figure>
+          <figcaption>Producer</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Robert Y. R. Huang 黃昱儒</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Recording Studio</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Lights Up Studio 享亮音樂國際有限公司</small>
+              <a class="icon-link" href="https://www.facebook.com/profile.php?id=100068670620212" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#facebook" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Recording Engineer</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Chou Han Tsay 蔡周翰</small>
+              <a class="icon-link" href="https://www.instagram.com/h945c04/" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#instagram" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Recording Engineer Assistant</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Shih Cheng Yu 于世政</small></li>
+            <li><small>Camille 相云</small></li>
+            <li><small>Chia Ying Chen 陳佳穎</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Mixing Studio</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Musit Music Studio 繆思特音樂工作室</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Mixing Engineer</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Sheng Fei Lu 呂聖斐</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Mastering Studio</figcaption>
+          <ul class="list-unstyled">
+            <li><small>(TBD)</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Mastering Engineer</figcaption>
+          <ul class="list-unstyled">
+            <li><small>(TBD)</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Video Editing</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Robert Y. R. Huang 黃昱儒</small></li>
+          </ul>
+        </figure>
+        <figure>
+          <figcaption>Photography</figcaption>
+          <ul class="list-unstyled">
+            <li><small>Wei Ting Chang 張維庭</small>
+              <a class="icon-link" href="https://www.youtube.com/@y82000391" target="_blank">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#youtube" />
+                </svg>
+              </a>
+            </li>
+            <li><small>Tong Ling Yu 余東霖</small></li>
+          </ul>
+        </figure>
+      </div>
+    </div>
+    <footer class="mt-auto text-white-50">
+      <p>© Robert Vandenberg Production</p>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
