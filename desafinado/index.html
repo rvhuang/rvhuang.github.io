@@ -19,18 +19,8 @@
     load(coverArt).then(() => {
       document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${coverArt})`;
       document.body.style.backgroundAttachment = 'fixed';
-
-      document.onreadystatechange = function () {
-        var state = document.readyState;
-        if (state == 'interactive') {
-          document.getElementById('contents').style.visibility = "collapse";
-        } else if (state == 'complete') {
-          setTimeout(function () {
-            document.getElementById('load').style.visibility = "collapse";
-            document.getElementById('contents').style.visibility = "visible";
-          }, 1000);
-        }
-      };
+      
+      document.getElementById('contents').style.visibility = "visible";
 
       var countDownDate = new Date("2024-03-29T02:00:00.000Z").getTime();
       var x = setInterval(function () {
@@ -210,11 +200,6 @@
       </p>
       <p class="lead">Available in</p>
       <h4 id="countdown"> </h4>
-    </main>
-    <main id="load" class="px-3 text-center">
-      <blockquote class="blockquote">
-        <p>Loading...</p>  
-      </blockquote>
     </main>
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
       aria-labelledby="offcanvasWithBothOptionsLabel">
