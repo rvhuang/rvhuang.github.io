@@ -185,12 +185,13 @@
     <header class="mb-auto">
       <div>
         <nav class="nav nav-masthead justify-content-center float-md-end">
-          <a class="nav-link py-1 px-0 active" href="index.html">Home</a>
-          <a class="nav-link py-1 px-0 active" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_story"
+          <a class="nav-link py-1 px-0" href="index.html">Home</a>
+          <a class="nav-link py-1 px-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_listen"
+          aria-controls="offcanvas_listen" href="#offcanvas_listen">Listen</a>
+          <a class="nav-link py-1 px-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_story"
           aria-controls="offcanvas_story" href="#offcanvas_story">Story</a>
-          <a class="nav-link py-1 px-0 active" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_credits"
+          <a class="nav-link py-1 px-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_credits"
             aria-controls="offcanvas_credits" href="#offcanvas_credits">Credits</a>
-          <a class="nav-link py-1 px-0 disabled" href="#listen">Listen Now</a>
         </nav>
       </div>
     </header>
@@ -199,7 +200,8 @@
       <h4> 
         <small>The Bossa Nova classic, reimaginated</small>  
       </h4> 
-      <h4 id="countdown">...</h4>
+      <button type="button" class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_listen"
+      aria-controls="offcanvas_listen">Listen Now</button>
     </main>
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvas_story"
       aria-labelledby="offcanvas_story_label">
@@ -213,7 +215,42 @@
         <p>
           <small>In April 1959, <cite>Chega de Saudade</cite>, often credited as the first bossa nova album, was released. After 65 years, we are proud to release our brand new reimagination of one of the classics from the album, <cite>Desafinado</cite>.</small> 
         </p>
+        <p>
+          <small>The project was conceived in June, 2023, along with an arrangement intended to be a cross between jazz lounge and bossa nova. Many prolific Taiwanese musicians were invited to the project, including drummer Wen Wei Chen (陳玟瑋) on percussion, Sheng Fei Lu (呂聖斐) on mixing and keyboard, and Refa Wang (王群婷) on upright bass. Special guest Mika from rock band DIZLIKE was also invited on wind chime. I was happy to have the opportunity to work with them.</small> 
+        </p>        
+        <p>
+          <small>But more importantly, I was thrilled to be able to invite my father, retired session pianist Barry C. T. Huang (黃忠道), as the keyboard soloist. This was my first ever project working with him. </small> 
+        </p>        
+        <p>
+          <small>The first demo was sent to the musicians in October, 2023. Most of the recording sessions were done in January, 2024. We had a lot of fun at Lights Up Studio, as you will see in the upcoming recording session video.</small> 
+        </p>        
+        <p>
+          <small>Happy listening!</small> 
+        </p>        
+        <p>
+          <small>Robert</small> 
+        </p>
       </div>
+    </div>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvas_listen"
+      aria-labelledby="offcanvas_listen_label">
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvas_listen_label">
+          Listen
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <hr>
+        <h5>Apple Music</h5>
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/desafinado-de-saudade-single/1739678203"></iframe>
+        <hr>
+        <h5>Amazon Music</h5>
+        <iframe id="AmazonMusicEmbedB0CZVSZG28" src="https://music.amazon.co.jp/embed/B0CZVSZG28/?id=Miokqbqfth&marketplaceId=A1VC38T7YXB528&musicTerritory=JP" width="100%" height="352px" frameBorder="0" style="border-radius:20px"></iframe>
+        <p>
+          <small>More platforms to be released.</small>
+        </p>
+      </div> 
     </div>
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvas_credits"
       aria-labelledby="offcanvas_credits_label">
@@ -257,7 +294,7 @@
           </ul>
         </figure>
         <figure>
-          <figcaption><small>Keyboards (solo), Special Guest</small></figcaption>
+          <figcaption><small>Keyboards (solo), Very Special Guest</small></figcaption>
           <ul class="list-unstyled">
             <li><small>Barry C. T. Huang 黃忠道</small></li>
           </ul>
@@ -292,7 +329,7 @@
           </ul>
         </figure>
         <figure>
-          <figcaption><small>Percussions (chimes)</small></figcaption>
+          <figcaption><small>Percussions (chimes), Special Guest</small></figcaption>
           <ul class="list-unstyled">
             <li><small>Mika</small>
               <a class="icon-link" href="https://www.instagram.com/mikapataflafla/" target="_blank">
